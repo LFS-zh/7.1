@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      4.1.&nbsp;About $LFS
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.1">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - Version 7.1
+      </h4>
+      <h3>
+        Chapter&nbsp;4.&nbsp;Final Preparations
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter04.html" title=
+          "Final Preparations">Prev</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="creatingtoolsdir.html" title=
+          "Creating the $LFS/tools Directory">Next</a>
+          <p>
+            Creating the $LFS/tools Directory
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter04.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="prepare-aboutlfs" name="prepare-aboutlfs"></a>4.1. About $LFS
+      </h1>
+      <p>
+        Throughout this book, the environment variable <code class=
+        "envar">LFS</code> will be used. It is paramount that this variable
+        is always defined. It should be set to the mount point chosen for the
+        LFS partition. Check that the <code class="envar">LFS</code> variable
+        is set up properly with:
+      </p>
+      <pre class="userinput"><kbd class="command">echo $LFS</kbd></pre>
+      <p>
+        Make sure the output shows the path to the LFS partition's mount
+        point, which is <code class="filename">/mnt/lfs</code> if the
+        provided example was followed. If the output is incorrect, the
+        variable can be set with:
+      </p>
+      <pre class="userinput"><kbd class=
+      "command">export LFS=/mnt/lfs</kbd></pre>
+      <p>
+        Having this variable set is beneficial in that commands such as
+        <span class="command"><strong>mkdir $LFS/tools</strong></span> can be
+        typed literally. The shell will automatically replace
+        &ldquo;<span class="quote">$LFS</span>&rdquo; with
+        &ldquo;<span class="quote">/mnt/lfs</span>&rdquo; (or whatever the
+        variable was set to) when it processes the command line.
+      </p>
+      <p>
+        Do not forget to check that <code class="envar">$LFS</code> is set
+        whenever you leave and reenter the current working environment (as
+        when doing a <span class="command"><strong>su</strong></span> to
+        <code class="systemitem">root</code> or another user).
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter04.html" title=
+          "Final Preparations">Prev</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="creatingtoolsdir.html" title=
+          "Creating the $LFS/tools Directory">Next</a>
+          <p>
+            Creating the $LFS/tools Directory
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter04.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

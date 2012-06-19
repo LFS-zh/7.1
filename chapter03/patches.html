@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      3.3.&nbsp;Needed Patches
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.1">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - Version 7.1
+      </h4>
+      <h3>
+        Chapter&nbsp;3.&nbsp;Packages and Patches
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="packages.html" title="All Packages">Prev</a>
+          <p>
+            All Packages
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../chapter04/chapter04.html" title=
+          "Final Preparations">Next</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter03.html" title=
+          "Chapter&nbsp;3.&nbsp;Packages and Patches">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="materials-patches" name="materials-patches"></a>3.3. Needed
+        Patches
+      </h1>
+      <p>
+        In addition to the packages, several patches are also required. These
+        patches correct any mistakes in the packages that should be fixed by
+        the maintainer. The patches also make small modifications to make the
+        packages easier to work with. The following patches will be needed to
+        build an LFS system:
+      </p>
+      <div class="materials">
+        <div class="variablelist">
+          <dl>
+            <dt>
+              <span class="term">Bash Upstream Fixes Patch - <span class=
+              "token">22 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/bash-4.2-fixes-4.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/bash-4.2-fixes-4.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">244e3ff74d53792f1db32dea75dc8627</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Bzip2 Documentation Patch - <span class=
+              "token">1.6 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/bzip2-1.0.6-install_docs-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/bzip2-1.0.6-install_docs-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">6a5ac7e89b791aae556de0f745916f7f</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Coreutils Internationalization Fixes Patch -
+              <span class="token">123 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/coreutils-8.15-i18n-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/coreutils-8.15-i18n-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">70953451fa1d0e950266b3d0477adb8d</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Coreutils Uname Patch - <span class=
+              "token">1.6 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/coreutils-8.15-uname-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/coreutils-8.15-uname-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">500481b75892e5c07e19e9953a690e54</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Flex GCC-4.4.x Patch - <span class="token">1
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/flex-2.5.35-gcc44-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/flex-2.5.35-gcc44-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">ad9109820534278c6dd0898178c0788f</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">GCC Cross Compile Patch - <span class=
+              "token">1.8 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/gcc-4.6.2-cross_compile-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/gcc-4.6.2-cross_compile-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">1b7886a7a4df3a48617e88a481862264</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">GCC Startfiles Fix Patch - <span class=
+              "token">1.5 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/gcc-4.6.2-startfiles_fix-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/gcc-4.6.2-startfiles_fix-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">799ef1971350d2e3c794f2123f247cc6</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Glibc Bug Fixes Patch - <span class=
+              "token">5.5 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-fixes-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-fixes-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">13bdfb7db1654d9c3d7934d24479a6c4</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Glibc Bug Sort Relocatable Objects Patch -
+              <span class="token">8.0 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-sort-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-sort-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">740e71017059a4290761db0cc9dd63f3</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Glibc GCC Build Fix Patch - <span class=
+              "token">2.5 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-gcc_fix-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-gcc_fix-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">d1f28cb98acb9417fe52596908bbb9fd</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Glibc GCC CPUID Patch - <span class=
+              "token">0.8 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-cpuid-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/glibc-2.14.1-cpuid-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">4f110dc9c8d4754fbda841492ce796b4</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Kbd Backspace/Delete Fix Patch -
+              <span class="token">12 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/kbd-1.15.2-backspace-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/kbd-1.15.2-backspace-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">f75cca16a38da6caa7d52151f7136895</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">MPFR Fixes Patch - <span class="token">17
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/mpfr-3.1.0-fixes-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/mpfr-3.1.0-fixes-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">6a1a0be6f2326e237ce27a0254e360a5</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Patch Testsuite Fix Patch - <span class=
+              "token">1 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/patch-2.6.1-test_fix-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/patch-2.6.1-test_fix-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">c51e1a95bfc5310635d05081472c3534</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Perl Libc Patch - <span class="token">1
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/perl-5.14.2-libc-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/perl-5.14.2-libc-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">23682f20b6785e97f99d33be7719c9d6</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Perl Security Patch - <span class="token">1
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/perl-5.14.2-security_fix-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/perl-5.14.2-security_fix-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">7fa3e7e11fecf9d75f65452d700c3dd5</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Procps HZ Errors Patch - <span class=
+              "token">2.3 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/procps-3.2.8-fix_HZ_errors-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/procps-3.2.8-fix_HZ_errors-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">2ea4c8e9a2c2a5a291ec63c92d7c6e3b</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Procps Watch Patch - <span class="token">3.5
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/procps-3.2.8-watch_unicode-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/procps-3.2.8-watch_unicode-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">cd1a757e532d93662a7ed71da80e6b58</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Readline Upstream Fixes Patch - <span class=
+              "token">1.3 KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/readline-6.2-fixes-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/readline-6.2-fixes-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">3c185f7b76001d3d0af614f6f2cd5dfa</code>
+              </p>
+            </dd>
+            <dt>
+              <span class="term">Shadow nscd Patch - <span class="token">1.1
+              KB</span>:</span>
+            </dt>
+            <dd>
+              <p>
+                Download: <a class="ulink" href=
+                "http://www.linuxfromscratch.org/patches/lfs/7.1/shadow-4.1.5-nscd-1.patch">
+                http://www.linuxfromscratch.org/patches/lfs/7.1/shadow-4.1.5-nscd-1.patch</a>
+              </p>
+              <p>
+                MD5 sum: <code class=
+                "literal">6fd6a209c1aa623bad913fcff20b7d8e</code>
+              </p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p>
+        Total size of these patches: about 209.5 KB
+      </p>
+      <p>
+        In addition to the above required patches, there exist a number of
+        optional patches created by the LFS community. These optional patches
+        solve minor problems or enable functionality that is not enabled by
+        default. Feel free to peruse the patches database located at
+        <a class="ulink" href=
+        "http://www.linuxfromscratch.org/patches/downloads/">http://www.linuxfromscratch.org/patches/downloads/</a>
+        and acquire any additional patches to suit your system needs.
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="packages.html" title="All Packages">Prev</a>
+          <p>
+            All Packages
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../chapter04/chapter04.html" title=
+          "Final Preparations">Next</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter03.html" title=
+          "Chapter&nbsp;3.&nbsp;Packages and Patches">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

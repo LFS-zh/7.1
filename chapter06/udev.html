@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.60.&nbsp;Udev-181
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.1">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - Version 7.1
+      </h4>
+      <h3>
+        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="texinfo.html" title="Texinfo-4.13a">Prev</a>
+          <p>
+            Texinfo-4.13a
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="vim.html" title="Vim-7.3">Next</a>
+          <p>
+            Vim-7.3
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-udev" name="ch-system-udev"></a>6.60. Udev-181
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Udev package contains programs for dynamic creation of device
+          nodes.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Approximate build time:</strong>
+              <span class="segbody">0.2 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Required disk space:</strong>
+              <span class="segbody">9.3 MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.60.1. Installation of Udev
+        </h2>
+        <p>
+          The udev-config tarball contains LFS-specific files used to
+          configure Udev. Unpack it into the Udev source directory:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">tar -xvf ../udev-config-20100128.tar.bz2</kbd></pre>
+        <p>
+          Create some devices and directories that Udev cannot handle due to
+          them being required very early in the boot process, or by Udev
+          itself:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">install -dv /lib/{firmware,udev/devices/pts}
+mknod -m0666 /lib/udev/devices/null c 1 3</kbd></pre>
+        <p>
+          Prepare the package for compilation:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">BLKID_CFLAGS="-I/usr/include/blkid"  \
+BLKID_LIBS="-L/lib -lblkid"          \
+KMOD_CFLAGS="-I/usr/include"         \
+KMOD_LIBS="-L/lib -lkmod"            \
+./configure  --prefix=/usr           \
+             --with-rootprefix=''    \
+             --bindir=/sbin          \
+             --sysconfdir=/etc       \
+             --libexecdir=/lib       \
+             --enable-rule_generator \
+             --disable-introspection \
+             --disable-keymap        \
+             --disable-gudev         \
+             --with-usb-ids-path=no  \
+             --with-pci-ids-path=no  \
+             --with-systemdsystemunitdir=no</kbd></pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the new configure options</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--libexecdir=/lib</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This controls where Udev-internal rules and helper programs
+                are installed.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--enable-rule_generator</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This allows persistent rules to be generated for network and
+                optical media devices
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class="parameter"><code>--disable-* and
+              --with-*</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                These options prevent Udev from installing helper programs
+                and other extras which require more external libraries. These
+                libraries are not part of the base LFS system. See the Udev
+                <code class="filename">README</code> file for more
+                information.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Compile the package:
+        </p>
+        <pre class="userinput"><kbd class="command">make</kbd></pre>
+        <p>
+          Test the package.
+        </p>
+        <pre class="userinput"><kbd class="command">make check</kbd></pre>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput"><kbd class="command">make install</kbd></pre>
+        <p>
+          Remove an empty documentation directory:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">rmdir -v /usr/share/doc/udev</kbd></pre>
+        <p>
+          Now install the LFS-specific custom rules files:
+        </p>
+        <pre class="userinput"><kbd class="command">cd udev-config-20100128
+make install</kbd></pre>
+        <p>
+          Install the documentation that explains the LFS-specific rules
+          files:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">make install-doc</kbd></pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-udev" name="contents-udev"></a>6.60.2. Contents of
+          Udev
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed programs:</strong>
+              <span class="segbody">ata_id, cdrom_id, collect,
+              create_floppy_devices, edd_id, firmware.sh, fstab_import,
+              path_id, scsi_id, udevadm, udevd, usb_id, write_cd_rules, and
+              write_net_rules</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed libraries:</strong>
+              <span class="segbody">libudev.{a,so}</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed directories:</strong>
+              <span class="segbody">/etc/udev, /lib/udev, /lib/firmware,
+              /usr/share/doc/udev-config,
+              /usr/share/gtk-doc/html/libudev</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            Short Descriptions
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="ata_id" name="ata_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>ata_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides Udev with a unique string and additional
+                    information (uuid, label) for an ATA drive
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="cdrom_id" name="cdrom_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>cdrom_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides Udev with the capabilities of a CD-ROM or
+                    DVD-ROM drive
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="collect" name="collect"></a><span class=
+                    "term"><span class=
+                    "command"><strong>collect</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Given an ID for the current uevent and a list of IDs (for
+                    all target uevents), registers the current ID and
+                    indicates whether all target IDs have been registered
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="create_floppy_devices" name=
+                    "create_floppy_devices"></a><span class=
+                    "term"><span class=
+                    "command"><strong>create_floppy_devices</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Creates all possible floppy devices based on the CMOS
+                    type
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="edd_id" name="edd_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>edd_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides Udev with the EDD ID for a BIOS disk drive
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="firmware.sh" name="firmware.sh"></a><span class=
+                    "term"><span class=
+                    "command"><strong>firmware.sh</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Uploads firmware to devices
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="fstab_import" name="fstab_import"></a><span class=
+                    "term"><span class=
+                    "command"><strong>fstab_import</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Finds an entry in <code class=
+                    "filename">/etc/fstab</code> that matches the current
+                    device, and provides its information to Udev
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="path_id" name="path_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>path_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides the shortest possible unique hardware path to a
+                    device
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="scsi_id" name="scsi_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>scsi_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides Udev with a unique SCSI identifier based on the
+                    data returned from sending a SCSI INQUIRY command to the
+                    specified device
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="udevadm" name="udevadm"></a><span class=
+                    "term"><span class=
+                    "command"><strong>udevadm</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Generic udev administration tool: controls the udevd
+                    daemon, provides info from the Udev database, monitors
+                    uevents, waits for uevents to finish, tests Udev
+                    configuration, and triggers uevents for a given device
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="udevd" name="udevd"></a><span class=
+                    "term"><span class=
+                    "command"><strong>udevd</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A daemon that listens for uevents on the netlink socket,
+                    creates devices and runs the configured external programs
+                    in response to these uevents
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="usb_id" name="usb_id"></a><span class=
+                    "term"><span class=
+                    "command"><strong>usb_id</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides Udev with information about USB devices
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="write_cd_rules" name=
+                    "write_cd_rules"></a><span class="term"><span class=
+                    "command"><strong>write_cd_rules</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A script which generates Udev rules to provide stable
+                    names for optical drives (see also <a class="xref" href=
+                    "../chapter07/symlinks.html" title=
+                    "7.5.&nbsp;Creating Custom Symlinks to Devices">Section&nbsp;7.5,
+                    &ldquo;Creating Custom Symlinks to Devices&rdquo;</a>)
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="write_net_rules" name=
+                    "write_net_rules"></a><span class="term"><span class=
+                    "command"><strong>write_net_rules</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A script which generates rules to provide stable names
+                    for network interfaces (see also <a class="xref" href=
+                    "../chapter07/network.html" title=
+                    "7.2.&nbsp;General Network Configuration">Section&nbsp;7.2,
+                    &ldquo;General Network Configuration&rdquo;</a>)
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libudev" name="libudev"></a><span class=
+                    "term"><code class="filename">libudev</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    A library interface to udev device information
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="etc-udev" name="etc-udev"></a><span class=
+                    "term"><code class="filename">/etc/udev</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Contains Udev configuration files, device permissions,
+                    and rules for device naming
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="texinfo.html" title="Texinfo-4.13a">Prev</a>
+          <p>
+            Texinfo-4.13a
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="vim.html" title="Vim-7.3">Next</a>
+          <p>
+            Vim-7.3
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter06.html" title=
+          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

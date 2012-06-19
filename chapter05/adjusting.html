@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.8.&nbsp;Adjusting the Toolchain
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.1">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - Version 7.1
+      </h4>
+      <h3>
+        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="glibc.html" title="Glibc-2.14.1">Prev</a>
+          <p>
+            Glibc-2.14.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils-pass2.html" title=
+          "Binutils-2.22 - Pass 2">Next</a>
+          <p>
+            Binutils-2.22 - Pass 2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-adjusting" name="ch-tools-adjusting"></a>5.8.
+        Adjusting the Toolchain
+      </h1>
+      <p>
+        Now that the temporary C libraries have been installed, all tools
+        compiled in the rest of this chapter should be linked against these
+        libraries. In order to accomplish this, the cross-compiler's specs
+        file needs to be adjusted to point to the new dynamic linker in
+        <code class="filename">/tools</code>.
+      </p>
+      <p>
+        This is done by dumping the compiler's &ldquo;<span class=
+        "quote">specs</span>&rdquo; file to a location where it will look for
+        it by default. A simple <span class=
+        "command"><strong>sed</strong></span> substitution then alters the
+        dynamic linker that GCC will use. The principle here is to find all
+        references to the dynamic linker file in <code class=
+        "filename">/lib</code> or possibly <code class=
+        "filename">/lib64</code> if the host system is 64-bit capable, and
+        adjust them to point to the new location in <code class=
+        "filename">/tools</code>.
+      </p>
+      <p>
+        For the sake of accuracy, it is recommended to use a copy-and-paste
+        method when issuing the following command. Be sure to visually
+        inspect the specs file to verify that it has properly adjusted all
+        references to the dynamic linker location. Refer to <a class="xref"
+        href="toolchaintechnotes.html" title=
+        "5.2.&nbsp;Toolchain Technical Notes">Section&nbsp;5.2,
+        &ldquo;Toolchain Technical Notes,&rdquo;</a> for the default name of
+        the dynamic linker, if necessary.
+      </p>
+      <pre class="userinput"><kbd class=
+      "command">SPECS=`dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/specs
+$LFS_TGT-gcc -dumpspecs | sed \
+  -e 's@/lib\(64\)\?/ld@/tools&amp;@g' \
+  -e "/^\*cpp:$/{n;s,$, -isystem /tools/include,}" &gt; $SPECS 
+echo "New specs file is: $SPECS"
+unset SPECS</kbd></pre>
+      <div class="admon caution">
+        <img alt="[Caution]" src="../images/caution.png" />
+        <h3>
+          Caution
+        </h3>
+        <p>
+          At this point, it is imperative to stop and ensure that the basic
+          functions (compiling and linking) of the new toolchain are working
+          as expected. To perform a sanity check, run the following commands:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">echo 'main(){}' &gt; dummy.c
+$LFS_TGT-gcc -B/tools/lib dummy.c
+readelf -l a.out | grep ': /tools'</kbd></pre>
+        <p>
+          If everything is working correctly, there should be no errors, and
+          the output of the last command will be of the form:
+        </p>
+        <pre class="screen"><code class=
+        "computeroutput">[Requesting program interpreter: /tools/lib/ld-linux.so.2]</code></pre>
+        <p>
+          Note that <code class="filename">/tools/lib</code>, or <code class=
+          "filename">/tools/lib64</code> for 64-bit machines appears as the
+          prefix of the dynamic linker.
+        </p>
+        <p>
+          If the output is not shown as above or there was no output at all,
+          then something is wrong. Investigate and retrace the steps to find
+          out where the problem is and correct it. This issue must be
+          resolved before continuing on. Something may have gone wrong with
+          the specs file amendment above. In this case, redo the specs file
+          amendment, being careful to copy-and-paste the commands.
+        </p>
+        <p>
+          Once all is well, clean up the test files:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">rm -v dummy.c a.out</kbd></pre>
+      </div>
+      <div class="admon note">
+        <img alt="[Note]" src="../images/note.png" />
+        <h3>
+          Note
+        </h3>
+        <p>
+          Building Binutils in the next section will serve as an additional
+          check that the toolchain has been built properly. If Binutils fails
+          to build, it is an indication that something has gone wrong with
+          the previous Binutils, GCC, or Glibc installations.
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="glibc.html" title="Glibc-2.14.1">Prev</a>
+          <p>
+            Glibc-2.14.1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="binutils-pass2.html" title=
+          "Binutils-2.22 - Pass 2">Next</a>
+          <p>
+            Binutils-2.22 - Pass 2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

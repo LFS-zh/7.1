@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      5.5.&nbsp;GCC-4.6.2 - Pass 1
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="lfs" id="lfs-7.1">
+    <div class="navheader">
+      <h4>
+        Linux From Scratch - Version 7.1
+      </h4>
+      <h3>
+        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="binutils-pass1.html" title=
+          "Binutils-2.22 - Pass 1">Prev</a>
+          <p>
+            Binutils-2.22 - Pass 1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="linux-headers.html" title=
+          "Linux-3.2.6 API Headers">Next</a>
+          <p>
+            Linux-3.2.6 API Headers
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-tools-gcc-pass1" name="ch-tools-gcc-pass1"></a>5.5.
+        GCC-4.6.2 - Pass 1
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The GCC package contains the GNU compiler collection, which
+          includes the C and C++ compilers.
+        </p>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Approximate build time:</strong>
+              <span class="segbody">5.0 SBU</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Required disk space:</strong>
+              <span class="segbody">1.2 GB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          5.5.1. Installation of Cross GCC
+        </h2>
+        <p>
+          GCC now requires the GMP, MPFR and MPC packages. As these packages
+          may not be included in your host distribution, they will be built
+          with GCC. Unpack each package into the GCC source directory and
+          rename the resulting directories so the GCC build procedures will
+          automatically use them:
+        </p>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            There are frequent misunderstandings about this chapter. The
+            procedures are the same as every other chapter as explained
+            earlier (<a class="xref" href=
+            "generalinstructions.html#buildinstr">Package build
+            instructions</a>). First extract the gcc tarball from the sources
+            directory and then change to the directory created. Only then
+            should you proceed with the instructions below.
+          </p>
+        </div>
+        <pre class="userinput"><kbd class=
+        "command">tar -jxf ../mpfr-3.1.0.tar.bz2
+mv -v mpfr-3.1.0 mpfr
+tar -Jxf ../gmp-5.0.4.tar.xz
+mv -v gmp-5.0.4 gmp
+tar -zxf ../mpc-0.9.tar.gz
+mv -v mpc-0.9 mpc</kbd></pre>
+        <p>
+          Apply a patch that will allow the building of the libiberty and
+          zlib target libraries to be disabled as these do not build
+          correctly in a cross-compiled environment:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">patch -Np1 -i ../gcc-4.6.2-cross_compile-1.patch</kbd></pre>
+        <p>
+          The GCC documentation recommends building GCC outside of the source
+          directory in a dedicated build directory:
+        </p>
+        <pre class="userinput"><kbd class="command">mkdir -v ../gcc-build
+cd ../gcc-build</kbd></pre>
+        <p>
+          Prepare GCC for compilation:
+        </p>
+        <pre class="userinput"><kbd class="command">../gcc-4.6.2/configure \
+    --target=$LFS_TGT --prefix=/tools \
+    --disable-nls --disable-shared --disable-multilib \
+    --disable-decimal-float --disable-threads \
+    --disable-libmudflap --disable-libssp \
+    --disable-libgomp --disable-libquadmath \
+    --disable-target-libiberty --disable-target-zlib \
+    --enable-languages=c --without-ppl --without-cloog \
+    --with-mpfr-include=$(pwd)/../gcc-4.6.2/mpfr/src \
+    --with-mpfr-lib=$(pwd)/mpfr/src/.libs</kbd></pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-shared</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This switch forces GCC to link its internal libraries
+                statically. We do this to avoid possible issues with the host
+                system.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-decimal-float, --disable-threads,
+              --disable-libmudflap, --disable-libssp, --disable-libgomp,
+              --disable-libquadmath --disable-target-libiberty
+              --disable-target-zlib</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                These switches disable support for the decimal floating point
+                extension, threading, libmudflap, libssp and libgomp,
+                libquadmath, libiberty and zlib respectively. These features
+                will fail to compile when building a cross-compiler and are
+                not necessary for the task of cross-compiling the temporary
+                libc.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-multilib</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                On x86_64, LFS does not yet support a multilib configuration.
+                This switch is harmless for x86.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--enable-languages=c</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option ensures that only the C compiler is built. This
+                is the only language needed now.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class="parameter"><code>--without-ppl,
+              --without-cloog</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                These switches prevent GCC from building against the PPL and
+                CLooG libraries which may be present on the host system, but
+                will not be available in the chroot environment.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Compile GCC by running:
+        </p>
+        <pre class="userinput"><kbd class="command">make</kbd></pre>
+        <p>
+          Compilation is now complete. At this point, the test suite would
+          normally be run, but, as mentioned before, the test suite framework
+          is not in place yet. The benefits of running the tests at this
+          point are minimal since the programs from this first pass will soon
+          be replaced.
+        </p>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput"><kbd class="command">make install</kbd></pre>
+        <p>
+          Using <em class="parameter"><code>--disable-shared</code></em>
+          means that the <code class="filename">libgcc_eh.a</code> file isn't
+          created and installed. The Glibc package depends on this library as
+          it uses <em class="parameter"><code>-lgcc_eh</code></em> within its
+          build system. This dependency can be satisfied by creating a
+          symlink to <code class="filename">libgcc.a</code>, since that file
+          will end up containing the objects normally contained in
+          <code class="filename">libgcc_eh.a</code>:
+        </p>
+        <pre class="userinput"><kbd class=
+        "command">ln -vs libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | \
+    sed 's/libgcc/&amp;_eh/'`</kbd></pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          Details on this package are located in <a class="xref" href=
+          "../chapter06/gcc.html#contents-gcc" title=
+          "6.17.2.&nbsp;Contents of GCC">Section&nbsp;6.17.2, &ldquo;Contents
+          of GCC.&rdquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="binutils-pass1.html" title=
+          "Binutils-2.22 - Pass 1">Prev</a>
+          <p>
+            Binutils-2.22 - Pass 1
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="linux-headers.html" title=
+          "Linux-3.2.6 API Headers">Next</a>
+          <p>
+            Linux-3.2.6 API Headers
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter05.html" title=
+          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Linux From Scratch - Version 7.1">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
