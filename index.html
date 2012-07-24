@@ -2,18 +2,17 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>
-      Linux From Scratch 
+      Linux From Scratch
     </title>
     <link rel="stylesheet" href="stylesheets/lfs.css" type="text/css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <meta name="generator" content="Bluefish 2.0.1" />
     <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
     media="print" />
   </head>
   <body class="lfs" id="lfs-7.1">
-    <div class="book" lang="en" xml:lang="en">
+    <div class="book" lang="zh_cn" xml:lang="zh_cn">
       <div class="titlepage">
         <div>
           <div>
@@ -30,97 +29,102 @@
             <div class="authorgroup">
               <div class="author">
                 <h3 class="author">
-                  <span class="firstname">由 Gerard 创建</span>
-                  <span class="surname">Beekmans</span>
+                  <span class="firstname">由 Gerard </span>
+                  <span class="surname">Beekmans 创建</span>
                 </h3>
               </div>
               <div class="author">
                 <h3 class="author">
                   <span class="firstname">由 Matthew Burgess</span>
-                  <span class="surname">和 Bruce Dubbs 共同编辑</span>
+                  <span class="surname">和 Bruce Dubbs 编辑</span>
                 </h3>
+							<h3 class="author">
+								<span class="firstname">中文译者： 朱凌宇    韩晓栋    和 <a href="http://www.stillman.tk">朱庆凯</a></span>
+							</h3>
               </div>
             </div>
           </div>
           <div>
             <p class="copyright">
-              <a href="legalnotice.html">Copyright</a> � 1999-2012 Gerard
+              <a href="legalnotice.html">Copyright</a> © 1999-2012 Gerard
               Beekmans
             </p>
+					 <p class="copyright">
+					 <span class="authorgroup">谨以此书献给<br> 
+																	发布日期：2012年<br />
+
+																   译者声明：<br />
+					 </span>
           </div>
         </div>
         <hr />
       </div>
       <div class="toc">
         <h3>
-          Table of Contents
+          目录
         </h3>
         <ul>
           <li class="preface">
             <h4>
-              Preface
+              序言
             </h4>
             <ul>
               <li class="sect1">
-                <a href="prologue/foreword.html">Foreword</a>
+                <a href="prologue/foreword.html">前言</a>
               </li>
               <li class="sect1">
-                <a href="prologue/audience.html">Audience</a>
+                <a href="prologue/audience.html">读者对象</a>
               </li>
               <li class="sect1">
-                <a href="prologue/architecture.html">LFS Target
-                Architectures</a>
+                <a href="prologue/architecture.html">LFS 目标架构</a>
               </li>
               <li class="sect1">
-                <a href="prologue/standards.html">LFS and Standards</a>
+                <a href="prologue/standards.html">LFS 及其标准</a>
               </li>
               <li class="sect1">
-                <a href="prologue/package-choices.html">Rationale for
-                Packages in the Book</a>
+                <a href="prologue/package-choices.html">本书软件包的选用</a>
               </li>
               <li class="sect1">
-                <a href="prologue/prerequisites.html">Prerequisites</a>
+                <a href="prologue/prerequisites.html">先决条件</a>
               </li>
               <li class="sect1">
-                <a href="prologue/hostreqs.html">Host System Requirements</a>
+                <a href="prologue/hostreqs.html">对宿主系统的要求</a>
               </li>
               <li class="sect1">
-                <a href="prologue/typography.html">Typography</a>
+                <a href="prologue/typography.html">排版约定</a>
               </li>
               <li class="sect1">
-                <a href="prologue/organization.html">Structure</a>
+                <a href="prologue/organization.html">本书结构</a>
               </li>
               <li class="sect1">
-                <a href="prologue/errata.html">Errata</a>
+                <a href="prologue/errata.html">勘误表</a>
               </li>
             </ul>
           </li>
           <li class="part">
             <h3>
-              I. Introduction
+              I. 介绍
             </h3>
             <ul>
               <li class="chapter">
                 <h4>
-                  1. Introduction
+                  		1. 介绍
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter01/how.html">How to Build an LFS
-                    System</a>
+                    <a href="chapter01/how.html">如何构建一个LFS系统</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter01/whatsnew.html">What's new since the
-                    last release</a>
+                    <a href="chapter01/whatsnew.html">上次发布以来的更新</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter01/changelog.html">Changelog</a>
+                    <a href="chapter01/changelog.html">更新日志</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter01/resources.html">Resources</a>
+                    <a href="chapter01/resources.html">相关资源</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter01/askforhelp.html">Help</a>
+                    <a href="chapter01/askforhelp.html">帮助</a>
                   </li>
                 </ul>
               </li>
@@ -128,98 +132,91 @@
           </li>
           <li class="part">
             <h3>
-              II. Preparing for the Build
+              II. 准备工作
             </h3>
             <ul>
               <li class="chapter">
                 <h4>
-                  2. Preparing a New Partition
+                  2. 准备一个新分区
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter02/introduction.html">Introduction</a>
+                    <a href="chapter02/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter02/creatingpartition.html">Creating a New
-                    Partition</a>
+                    <a href="chapter02/creatingpartition.html">创建一个新的分区</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter02/creatingfilesystem.html">Creating a
-                    File System on the Partition</a>
+                    <a href="chapter02/creatingfilesystem.html">在该分区上创建文件系统</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter02/mounting.html">Mounting the New
-                    Partition</a>
+                    <a href="chapter02/mounting.html">挂载新分区</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  3. Packages and Patches
+                  3. 软件包和补丁
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter03/introduction.html">Introduction</a>
+                    <a href="chapter03/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter03/packages.html">All Packages</a>
+                    <a href="chapter03/packages.html">全部软件包</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter03/patches.html">Needed Patches</a>
+                    <a href="chapter03/patches.html">所需补丁</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  4. Final Preparations
+                  4. 最后的准备工作
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter04/aboutlfs.html">About $LFS</a>
+                    <a href="chapter04/aboutlfs.html">关于 $LFS</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter04/creatingtoolsdir.html">Creating the
-                    $LFS/tools Directory</a>
+                    <a href="chapter04/creatingtoolsdir.html">创建
+                    $LFS/tools 目录</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter04/addinguser.html">Adding the LFS
-                    User</a>
+                    <a href="chapter04/addinguser.html">添加 LFS
+                    			用户</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter04/settingenvironment.html">Setting Up
-                    the Environment</a>
+                    <a href="chapter04/settingenvironment.html">设置工作环境</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter04/aboutsbus.html">About SBUs</a>
+                    <a href="chapter04/aboutsbus.html">关于 SBUs</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter04/abouttestsuites.html">About the Test
-                    Suites</a>
+                    <a href="chapter04/abouttestsuites.html">关于测试套件</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  5. Constructing a Temporary System
+                  5. 构建临时系统
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter05/introduction.html">Introduction</a>
+                    <a href="chapter05/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/toolchaintechnotes.html">Toolchain
-                    Technical Notes</a>
+                    <a href="chapter05/toolchaintechnotes.html">工具链技术说明</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/generalinstructions.html">General
-                    Compilation Instructions</a>
+                    <a href="chapter05/generalinstructions.html">常用编译指导</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter05/binutils-pass1.html">Binutils-2.22 -
-                    Pass 1</a>
+                    第一遍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/gcc-pass1.html">GCC-4.6.2 - Pass 1</a>
+                    <a href="chapter05/gcc-pass1.html">GCC-4.6.2 - 第一遍</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter05/linux-headers.html">Linux-3.2.6 API
@@ -229,15 +226,14 @@
                     <a href="chapter05/glibc.html">Glibc-2.14.1</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/adjusting.html">Adjusting the
-                    Toolchain</a>
+                    <a href="chapter05/adjusting.html">调整工具链</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter05/binutils-pass2.html">Binutils-2.22 -
-                    Pass 2</a>
+                    第二遍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/gcc-pass2.html">GCC-4.6.2 - Pass 2</a>
+                    <a href="chapter05/gcc-pass2.html">GCC-4.6.2 - 第二遍</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter05/tcl.html">Tcl-8.5.11</a>
@@ -309,11 +305,10 @@
                     <a href="chapter05/xz-utils.html">Xz-5.0.3</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/stripping.html">Stripping</a>
+                    <a href="chapter05/stripping.html">剥离临时系统</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter05/changingowner.html">Changing
-                    Ownership</a>
+                    <a href="chapter05/changingowner.html">更改所有者</a>
                   </li>
                 </ul>
               </li>
@@ -321,35 +316,31 @@
           </li>
           <li class="part">
             <h3>
-              III. Building the LFS System
+              III. 构建LFS系统
             </h3>
             <ul>
               <li class="chapter">
                 <h4>
-                  6. Installing Basic System Software
+                  6. 安装基础系统软件
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter06/introduction.html">Introduction</a>
+                    <a href="chapter06/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/kernfs.html">Preparing Virtual Kernel
-                    File Systems</a>
+                    <a href="chapter06/kernfs.html">准备虚拟内核文件系统</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/pkgmgt.html">Package Management</a>
+                    <a href="chapter06/pkgmgt.html">软件包管理</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/chroot.html">Entering the Chroot
-                    Environment</a>
+                    <a href="chapter06/chroot.html">进入 Chroot 环境</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/creatingdirs.html">Creating
-                    Directories</a>
+                    <a href="chapter06/creatingdirs.html">创建系统目录结构</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/createfiles.html">Creating Essential
-                    Files and Symlinks</a>
+                    <a href="chapter06/createfiles.html">创建必要的文件与符号连接</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter06/linux-headers.html">Linux-3.2.6 API
@@ -362,8 +353,7 @@
                     <a href="chapter06/glibc.html">Glibc-2.14.1</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/readjusting.html">Re-adjusting the
-                    Toolchain</a>
+                    <a href="chapter06/readjusting.html">再次调整工具链</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter06/zlib.html">Zlib-1.2.6</a>
@@ -520,116 +510,106 @@
                     <a href="chapter06/vim.html">Vim-7.3</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/aboutdebug.html">About Debugging
-                    Symbols</a>
+                    <a href="chapter06/aboutdebug.html">关于调试符号</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/strippingagain.html">Stripping
-                    Again</a>
+                    <a href="chapter06/strippingagain.html">再次剥离</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter06/revisedchroot.html">Cleaning Up</a>
+                    <a href="chapter06/revisedchroot.html">清理系统</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  7. Setting Up System Bootscripts
+                  7. 构建系统启动脚本
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter07/introduction.html">Introduction</a>
+                    <a href="chapter07/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/network.html">General Network
-                    Configuration</a>
+                    <a href="chapter07/network.html">常规网络配置</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/hosts.html">Customizing the /etc/hosts
-                    File</a>
+                    <a href="chapter07/hosts.html">定制 /etc/hosts
+                    文件</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/udev.html">Device and Module Handling
-                    on an LFS System</a>
+                    <a href="chapter07/udev.html">LFS系统的设备和模块处理</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/symlinks.html">Creating Custom
-                    Symlinks to Devices</a>
+                    <a href="chapter07/symlinks.html">为设备创建符号连接</a>
                   </li>
                   <li class="sect1">
                     <a href=
                     "chapter07/bootscripts.html">LFS-Bootscripts-20120229</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/usage.html">How Do These Bootscripts
-                    Work?</a>
+                    <a href="chapter07/usage.html">启动脚本如何工作？</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/hostname.html">Configuring the system
-                    hostname</a>
+                    <a href="chapter07/hostname.html">配置系统主机名</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/setclock.html">Configuring the
-                    setclock Script</a>
+                    <a href="chapter07/setclock.html">配置
+                    setclock 脚本</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/console.html">Configuring the Linux
-                    Console</a>
+                    <a href="chapter07/console.html">配置Linux控制台</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/sysklogd.html">Configuring the
-                    sysklogd Script</a>
+                    <a href="chapter07/sysklogd.html">配置
+                    sysklogd 脚本</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/site.html">The rc.site File</a>
+                    <a href="chapter07/site.html">rc.site 文件</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/profile.html">The Bash Shell Startup
-                    Files</a>
+                    <a href="chapter07/profile.html">Bash Shell 启动文件</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter07/inputrc.html">Creating the
-                    /etc/inputrc File</a>
+                    <a href="chapter07/inputrc.html">创建
+                    /etc/inputrc 文件</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  8. Making the LFS System Bootable
+                  8. 使LFS系统可以启动
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter08/introduction.html">Introduction</a>
+                    <a href="chapter08/introduction.html">介绍</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter08/fstab.html">Creating the /etc/fstab
-                    File</a>
+                    <a href="chapter08/fstab.html">创建 /etc/fstab
+                    文件</a>
                   </li>
                   <li class="sect1">
                     <a href="chapter08/kernel.html">Linux-3.2.6</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter08/grub.html">Using GRUB to Set Up the
-                    Boot Process</a>
+                    <a href="chapter08/grub.html">使用 GRUB 配置启动过程</a>
                   </li>
                 </ul>
               </li>
               <li class="chapter">
                 <h4>
-                  9. The End
+                  9. 结束
                 </h4>
                 <ul>
                   <li class="sect1">
-                    <a href="chapter09/theend.html">The End</a>
+                    <a href="chapter09/theend.html">结束</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter09/getcounted.html">Get Counted</a>
+                    <a href="chapter09/getcounted.html">看看你是第几个？</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter09/reboot.html">Rebooting the System</a>
+                    <a href="chapter09/reboot.html">重启系统</a>
                   </li>
                   <li class="sect1">
-                    <a href="chapter09/whatnow.html">What Now?</a>
+                    <a href="chapter09/whatnow.html">接下来做什么？</a>
                   </li>
                 </ul>
               </li>
@@ -637,22 +617,21 @@
           </li>
           <li class="part">
             <h3>
-              IV. Appendices
+              IV. 附录
             </h3>
             <ul>
               <li class="appendix">
-                <a href="appendices/acronymlist.html">A. Acronyms and
-                Terms</a>
+                <a href="appendices/acronymlist.html">A. 缩写和术语</a>
               </li>
               <li class="appendix">
                 <a href="appendices/acknowledgements.html">B.
-                Acknowledgments</a>
+                感谢</a>
               </li>
               <li class="appendix">
-                <a href="appendices/dependencies.html">C. Dependencies</a>
+                <a href="appendices/dependencies.html">C. 依赖关系</a>
               </li>
               <li class="appendix">
-                <a href="scripts/scripts.html">D. Boot and sysconfig scripts
+                <a href="scripts/scripts.html">D. 启动和系统配置脚本
                 version-20120229</a>
                 <ul>
                   <li class="sect1">
@@ -763,8 +742,7 @@
                 </ul>
               </li>
               <li class="appendix">
-                <a href="scripts/udev-rules.html">E. Udev configuration
-                rules</a>
+                <a href="scripts/udev-rules.html">E. Udev 配置规则</a>
                 <ul>
                   <li class="sect1">
                     <a href="scripts/apes01.html">55-lfs.rules</a>
@@ -772,14 +750,13 @@
                 </ul>
               </li>
               <li class="appendix">
-                <a href="appendices/licenses.html">F. LFS Licenses</a>
+                <a href="appendices/licenses.html">F. LFS 许可</a>
                 <ul>
                   <li class="sect1">
-                    <a href="appendices/creat-comm.html">Creative Commons
-                    License</a>
+                    <a href="appendices/creat-comm.html">知识共享许可</a>
                   </li>
                   <li class="sect1">
-                    <a href="appendices/mit.html">The MIT License</a>
+                    <a href="appendices/mit.html">MIT 许可证</a>
                   </li>
                 </ul>
               </li>
@@ -787,7 +764,7 @@
           </li>
           <li class="index">
             <h3>
-              <a href="longindex.html">Index</a>
+              <a href="longindex.html">索引</a>
             </h3>
           </li>
         </ul>
@@ -797,9 +774,9 @@
       <ul>
         <li class="next">
           <a accesskey="n" href="prologue/preface.html" title=
-          "Preface">Next</a>
+          "Preface">下一页</a>
           <p>
-            Preface
+            序言
           </p>
         </li>
         <li class="up">.
